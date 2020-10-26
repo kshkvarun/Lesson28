@@ -3,6 +3,7 @@ package Lesson28;
 import static com.codeborne.selenide.Condition.*;
 import com.codeborne.selenide.Condition.*;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.commands.PressEnter;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -12,14 +13,18 @@ public class Flyuia {
 
     @Test
     public void searchTicketsFlyuiaCom() {
-
-        open("https://www.flyuia.com/");
         Configuration.timeout = 10000;
+        Configuration.startMaximized = true;
+        open("https://www.flyuia.com/");
 
 
-        $$("input[class='ng-untouched ng-pristine ng-valid']").get(0).setValue("VIENNA").pressEnter();
-        $$("input[class='ng-untouched ng-pristine ng-valid']").get(1).setValue("Kyiv").pressEnter();
+
+        $("#SEARCH_WIDGET_FORM_INPUTS_DEPARTURE .ng-untouched").val("VIENNA");
+        $x("//sw-form-control-container[@id='SEARCH_WIDGET_FORM_INPUTS_DEPARTURE']/div/div[2]/input").pressEnter();
+        sleep(20000);
+        $("#SEARCH_WIDGET_FORM_INPUTS_ARRIVAL .ng-untouched").setValue("Kyiv").pressEnter();
         $("span[class='obe-sw-icon-calendar-departure']").click();
+        $("i[class='obe-sw-icon-navigate_next']").click();
         $x("//button[@class='calendar-day calendar-day-btn fx-flex-fill fx-row__center__center'][contains(text(), '19')]").click();
         $("span[class='obe-sw-icon-calendar-arrivals']").click();
         $x("//button[@class='calendar-day calendar-day-btn fx-flex-fill fx-row__center__center'][contains(text(), '22')]").click();
