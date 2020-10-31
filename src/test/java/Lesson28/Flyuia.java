@@ -19,9 +19,9 @@ public class Flyuia {
 
 
 
-        $("#SEARCH_WIDGET_FORM_INPUTS_DEPARTURE .ng-untouched").val("VIENNA");
-        $x("//sw-form-control-container[@id='SEARCH_WIDGET_FORM_INPUTS_DEPARTURE']/div/div[2]/input").pressEnter();
-        sleep(20000);
+        $("#SEARCH_WIDGET_FORM_INPUTS_DEPARTURE .ng-untouched").setValue("VIENNA");
+        sleep(10000);
+        $("#SEARCH_WIDGET_FORM_INPUTS_DEPARTURE .ng-untouched").pressEnter();
         $("#SEARCH_WIDGET_FORM_INPUTS_ARRIVAL .ng-untouched").setValue("Kyiv").pressEnter();
         $("span[class='obe-sw-icon-calendar-departure']").click();
         $("i[class='obe-sw-icon-navigate_next']").click();
