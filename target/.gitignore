@@ -1,0 +1,24 @@
+#Logs
+*.log
+
+#CLass
+*.class
+
+.gradle
+
+**/target/
+/target/
+*/target/*
+.classpath
+.project
+.settings
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+*.iml
+*.idea
+
+
