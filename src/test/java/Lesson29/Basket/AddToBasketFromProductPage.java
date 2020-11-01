@@ -31,7 +31,8 @@ public class AddToBasketFromProductPage {
 
     @Test
     public void addProductToBasketFromMenu(){
-        mainpage.waitForPopUp()
+        mainpage.waitForCompletePage()
+                .waitForPopUp()
                 .closePopUp()
                 .hoverMenuItem("Смартфоны")
                 .clickOnMenuItem("Apple");
@@ -44,8 +45,6 @@ public class AddToBasketFromProductPage {
         basketPage.getProductNamesFromBasket().get(0).shouldHave(text(productName));
         basketPage.getBasketProductPrice().get(0).shouldHave(text(productPrice));
         basketPage.getBasketTotal().shouldHave(text(productPrice));
-
-
     }
 
 }

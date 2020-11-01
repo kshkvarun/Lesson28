@@ -1,23 +1,25 @@
 package Citrus.Pages;
 
 import com.codeborne.selenide.SelenideElement;
-
-import static com.codeborne.selenide.Condition.*;
-
 import static com.codeborne.selenide.Selenide.*;
 
-public class MainPage {
+public class MainPage extends GeneralWaiterPage {
 
     SelenideElement popUpCloseButton = $("el-icon-close");
+    SelenideElement searchField = $x("//input[@class='global-search__field']");
 
     public MainPage hoverMenuItem(String menuItem) {
         $x("//div[@class='menu--desktop__drop-list show']//a[@href='/smartfony/']/span[contains(text(),'" + menuItem + "')]").hover();
-
         return this;
     }
 
     public MainPage clickOnMenuItem(String text) {
-        $x("//div[@class='menu-aim__item-submenu']//a[@href='/smartfony/brand-apple/']//span[contains(text(), '" + text + "')]").click();
+        $x("//div[@class='menu-aim__item-submenu']//a[@href='/smartfony/brand-xiaomi/']//span[contains(text(), '" + text + "')]").click();
+        return this;
+    }
+
+    public MainPage waitForCompletePage() {
+        super.waitForCompletePage();
         return this;
     }
 
@@ -29,6 +31,11 @@ public class MainPage {
         if (popUpCloseButton.isDisplayed()) {
             popUpCloseButton.click();
         }
+        return this;
+    }
+
+    public MainPage searchProduct(String productName) {
+        searchField.val(productName).pressEnter();
         return this;
     }
 }
