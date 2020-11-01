@@ -1,27 +1,27 @@
 package Lesson30.Models;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
-public class EmployeeResponseBody {
+public class PutEmployeeResponse {
 
     String status;
-    Employee data;
+    ArrayList<String> data;
     String message;
 
-    public EmployeeResponseBody(String status, Employee data, String message) {
+    public PutEmployeeResponse(String status, ArrayList<String> data, String message) {
         this.status = status;
         this.data = data;
         this.message = message;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        EmployeeResponseBody that = (EmployeeResponseBody) o;
+        PutEmployeeResponse that = (PutEmployeeResponse) o;
         return Objects.equals(status, that.status) &&
-                data.equals(that.data) &&
+                Objects.equals(data, that.data) &&
                 Objects.equals(message, that.message);
     }
 
