@@ -17,6 +17,14 @@ public class MainPage extends GeneralWaiterPage {
         $x("//div[@class='menu-aim__item-submenu']//a[@href='/smartfony/brand-xiaomi/']//span[contains(text(), '" + text + "')]").click();
         return this;
     }
+    public MainPage clickOnMenuItem1(String text) {
+        $x("//div[@class='menu-aim__item-submenu']//a[@href='/smartfony/brand-samsung/']//span[contains(text(), '" + text + "')]").click();
+        return this;
+    }
+    public MainPage clickOnMenuItem2(String text) {
+        $x("//div[@class='menu-aim__item-submenu']//a[@href='/smartfony/brand-huawei/']//span[contains(text(), '" + text + "')]").click();
+        return this;
+    }
 
     public MainPage waitForCompletePage() {
         super.waitForCompletePage();

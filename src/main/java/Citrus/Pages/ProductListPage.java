@@ -31,6 +31,8 @@ public class ProductListPage extends GeneralWaiterPage {
 
     ElementsCollection productsNames = $$x("//div[@class='product-card__name']");
     ElementsCollection productsPrices = $$x("//div[@class='prices__price']/span[@class='price']");
+    ElementsCollection products = $$x("//div[@class='properties__body']/ul/li/span[@class='item__value']");
+
 
 
     public ProductListPage waitForCompletePage() {
@@ -138,8 +140,19 @@ public class ProductListPage extends GeneralWaiterPage {
     public ProductListPage ifAllNamesContainsSameWord(String productName) throws Exception {
         for (SelenideElement names : productsNames) {
 //            Подстава,  в выборку попал другой телефон. БЫть может один и тот же производитель
-            if (!names.getText().contains(productName) || !names.getText().contains("Poco") ) {
+            if (!names.getText().contains(productName) || !names.getText().contains("Poco")) {
                 throw new Exception("Not all items are '" + productName + "'");
+            }
+        }
+        return this;
+    }
+
+    public ProductListPage ifAllProductsContainsSameWord(String productName) throws Exception {
+        for (SelenideElement product : products) {
+            System.out.println(product.getText());
+//            Подстава,  в выборку попал другой телефон. БЫть может один и тот же производитель
+            if (!product.getText().contains(productName)) {
+                throw new Exception("Not all items are made of '" + productName + "'");
             }
         }
         return this;
@@ -152,6 +165,11 @@ public class ProductListPage extends GeneralWaiterPage {
 
     public ProductListPage addMaxRamGb() {
         $x("//a[@href='https://www.citrus.ua/smartfony/brand-xiaomi/hdd_64-gb/']").click();
+        return this;
+    }
+
+    public ProductListPage chooseMaterial() {
+        $x("//a[@href='https://www.citrus.ua/smartfony/brand-huawei/materialy-korpusa_metall/']").click();
         return this;
     }
 }

@@ -41,7 +41,6 @@ public class MemoryFilter {
         productListPage.waitForCompletePage();
         productListPage.ifAllNamesContainsSameWord("Xiaomi");
         productListPage.ifAllAreInMemoryRange("16", "32");
-
     }
 
 }

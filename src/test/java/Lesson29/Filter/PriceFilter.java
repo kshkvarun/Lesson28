@@ -34,7 +34,7 @@ public class PriceFilter {
         mainpage.waitForCompletePage()
                 .closePopUp()
                 .hoverMenuItem("Смартфоны")
-                .clickOnMenuItem("Samsung");
+                .clickOnMenuItem1("Samsung");
         productListPage.waitForCompletePage();
         productListPage.addMinPrice();
         productListPage.waitForCompletePage();
