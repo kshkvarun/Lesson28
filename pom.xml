@@ -6,27 +6,17 @@
     <groupId>org.example</groupId>
     <artifactId>Task2</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <source>13</source>
-                        <target>13</target>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-
-
-
-    </build>
+    <properties>
+        <aspectj.version>1.9.6</aspectj.version>
+        <allure.version>{latest-allure-version}</allure.version>
+    </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.13.6</version>
+        </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
@@ -64,7 +54,6 @@
             <version>1.7.30</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
@@ -85,5 +74,50 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>13</source>
+                        <target>13</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>io.qameta.allure</groupId>
+                    <artifactId>allure-maven</artifactId>
+                    <version>2.22.2</version>
+                    <configuration>
+                        <resultsDirectory>target\allure-results</resultsDirectory>
+                        <inputDirectories>target\allure-results</inputDirectories>
+                        <outputDirectory>target\allure-report</outputDirectory>
+                        <reportVersion>2.10.1</reportVersion>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.2</version>
+                    <configuration>
+                        <argLine>
+                            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                        </argLine>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.aspectj</groupId>
+                            <artifactId>aspectjweaver</artifactId>
+                            <version>${aspectj.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
 
 </project>
