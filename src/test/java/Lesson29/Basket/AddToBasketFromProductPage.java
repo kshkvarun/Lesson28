@@ -35,7 +35,7 @@ public class AddToBasketFromProductPage {
                 .waitForPopUp()
                 .closePopUp()
                 .hoverMenuItem("Смартфоны")
-                .clickOnMenuItem("Apple");
+                .clickOnMenuItemApple("Apple");
         productListPage.clickProductByName("Apple iPhone 11 128Gb Black");
         String productPrice = productPage.getProductPrice();
         String productName = productPage.getProductName();

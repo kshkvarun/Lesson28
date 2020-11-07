@@ -6,7 +6,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class MemoryFilter {
 
@@ -33,7 +32,7 @@ public class MemoryFilter {
         mainpage.waitForCompletePage()
                 .closePopUp()
                 .hoverMenuItem("Смартфоны")
-                .clickOnMenuItem("Xiaomi");
+                .clickOnMenuItemApple("Xiaomi");
         productListPage.waitForCompletePage();
         productListPage.addMinRamGb();
         productListPage.waitForCompletePage();

@@ -6,7 +6,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class BodyMaterolFilter {
 
@@ -33,7 +32,7 @@ public class BodyMaterolFilter {
         mainpage.waitForCompletePage()
                 .closePopUp()
                 .hoverMenuItem("Смартфоны")
-                .clickOnMenuItem2("Huawei");
+                .clickOnMenuItemHuawei("Huawei");
         productListPage.waitForCompletePage();
         productListPage.chooseMaterial();
         productListPage.waitForCompletePage();

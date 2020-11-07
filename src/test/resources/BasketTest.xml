@@ -3,8 +3,7 @@
 <suite name="Citrus" configfailurepolicy="continue">
     <test name="Main test">
         <classes>
-            <class name="Lesson29.Basket.AddToBasketFromProductPage"></class>
-            <class name="Lesson29.Basket.AddToBasketUsingSearch"></class>
+            <class name="Lesson29.Basket.AddToBasketFromProductPage"/>
         </classes>
     </test>
 </suite>

@@ -2,12 +2,10 @@ package Lesson29.Filter;
 
 import Citrus.Pages.*;
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.SelenideElement;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class PriceFilter {
 
@@ -34,7 +32,7 @@ public class PriceFilter {
         mainpage.waitForCompletePage()
                 .closePopUp()
                 .hoverMenuItem("Смартфоны")
-                .clickOnMenuItem1("Samsung");
+                .clickOnMenuItemSamsung("Samsung");
         productListPage.waitForCompletePage();
         productListPage.addMinPrice();
         productListPage.waitForCompletePage();
