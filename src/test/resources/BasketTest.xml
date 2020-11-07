@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Basket Test" configfailurepolicy="continue">
-<parameter name="basket test ?" value="Some test"/>
+<suite name="Citrus" configfailurepolicy="continue">
     <test name="Main test">
         <classes>
-            <class name=""></class>
+            <class name="Lesson29.Basket.AddToBasketFromProductPage"></class>
+            <class name="Lesson29.Basket.AddToBasketUsingSearch"></class>
         </classes>
+    </test>
+</suite>
