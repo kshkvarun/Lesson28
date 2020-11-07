@@ -1,15 +1,18 @@
-package Lesson30.Models;
+package Lesson29_31.Models;
 
-import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
-public class PutEmployeeResponse {
-
+public class GetNonExistingEmployee {
+    @JsonProperty("status")
     String status;
-    ArrayList<String> data;
+    @JsonProperty("data")
+    String data;
+    @JsonProperty("message")
     String message;
 
-    public PutEmployeeResponse(String status, ArrayList<String> data, String message) {
+    public GetNonExistingEmployee(String status, String data, String message) {
         this.status = status;
         this.data = data;
         this.message = message;
@@ -19,7 +22,7 @@ public class PutEmployeeResponse {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PutEmployeeResponse that = (PutEmployeeResponse) o;
+        GetNonExistingEmployee that = (GetNonExistingEmployee) o;
         return Objects.equals(status, that.status) &&
                 Objects.equals(data, that.data) &&
                 Objects.equals(message, that.message);

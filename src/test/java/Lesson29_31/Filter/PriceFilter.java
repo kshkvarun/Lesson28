@@ -1,4 +1,4 @@
-package Lesson29.Filter;
+package Lesson29_31.Filter;
 
 import Citrus.Pages.*;
 import com.codeborne.selenide.Configuration;

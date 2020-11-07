@@ -1,13 +1,20 @@
-package Lesson30.Models;
+package Lesson29_31.Models;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Objects;
 
 public class Employee {
 
+    @JsonProperty("id")
     Integer id;
+    @JsonProperty("employee_nam")
     String employee_name;
+    @JsonProperty("employee_salary")
     Integer employee_salary;
+    @JsonProperty("employee_age")
     Integer employee_age;
+    @JsonProperty("profile_image")
     String profile_image;
 
     public Employee(String employee_Name, Integer employeeSalary, Integer employeeAge, String profileImage) {

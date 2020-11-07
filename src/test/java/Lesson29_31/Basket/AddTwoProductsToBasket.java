@@ -1,20 +1,24 @@
-package Lesson29.Basket;
+package Lesson29_31.Basket;
 
-import Citrus.Pages.*;
+import Citrus.Pages.CartPage;
+import Citrus.Pages.MainPage;
+import Citrus.Pages.ProductListPage;
+import Citrus.Pages.ProductPage;
 import com.codeborne.selenide.Configuration;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
 
-public class AddTwoProductsToBasketFromComparison {
+public class AddTwoProductsToBasket {
+
     MainPage mainpage;
     ProductListPage productListPage;
     ProductPage productPage;
     CartPage basketPage;
-    ComparisonPage comparisonPage;
 
     @BeforeClass
     public void openSite(){
@@ -24,12 +28,11 @@ public class AddTwoProductsToBasketFromComparison {
         productListPage = new ProductListPage();
         basketPage = new CartPage();
         productPage = new ProductPage();
-        comparisonPage = new ComparisonPage();
     }
 
 
     @Test
-    public void addProductToBasketFromComparison(){
+    public void addProductToBasketUsingSearch(){
         mainpage.waitForCompletePage()
                 .waitForPopUp()
                 .closePopUp()
@@ -41,20 +44,22 @@ public class AddTwoProductsToBasketFromComparison {
         String productName2 = productListPage.getProductName2();
         System.out.println(productName1);
         System.out.println(productName2);
-        productListPage.addTocompareFirst();
-        productListPage.addToCompareSecond();
-        productListPage.clickCompare();
-        comparisonPage.addFirstProductToCart();
-        comparisonPage.addSecondProductToCart();
-        productListPage.clickCartButton();
+        productListPage.buyFirstItem();
+        productListPage.buySecondItem();
+        basketPage.getBusket().shouldBe(visible);
 
         basketPage.getProductNamesFromBasket().shouldHaveSize(2);
-        basketPage.getProductNamesFromBasket().get(0).shouldHave(text(productName2));
-        basketPage.getProductNamesFromBasket().get(1).shouldHave(text(productName1));
+        basketPage.getProductNamesFromBasket().get(0).shouldHave(text(productName1));
+        basketPage.getProductNamesFromBasket().get(1).shouldHave(text(productName2));
 
         Assert.assertEquals(productPrice1, basketPage.getBasketFirstPrice());
         Assert.assertEquals(productPrice2, basketPage.getBasketSecondPrice());
         Assert.assertEquals(totalPrice, basketPage.getBasketTotal2());
 
     }
+
+
+
+
+
 }

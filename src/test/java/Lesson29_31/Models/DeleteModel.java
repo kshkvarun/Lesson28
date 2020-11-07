@@ -1,27 +1,32 @@
-package Lesson30.Models;
+package Lesson29_31.Models;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Objects;
 
-public class EmployeeResponseBody {
+public class DeleteModel {
 
+    @JsonProperty("status")
     String status;
-    Employee data;
+    @JsonProperty("data")
+    Integer data;
+    @JsonProperty("message")
     String message;
 
-    public EmployeeResponseBody(String status, Employee data, String message) {
+
+    public DeleteModel(String status, Integer data, String message) {
         this.status = status;
         this.data = data;
         this.message = message;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        EmployeeResponseBody that = (EmployeeResponseBody) o;
+        DeleteModel that = (DeleteModel) o;
         return Objects.equals(status, that.status) &&
-                data.equals(that.data) &&
+                Objects.equals(data, that.data) &&
                 Objects.equals(message, that.message);
     }
 

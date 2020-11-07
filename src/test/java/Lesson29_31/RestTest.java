@@ -1,7 +1,9 @@
-package Lesson30;
+package Lesson29_31;
 
-import Lesson30.Models.*;
+import Lesson29_31.Listener.Listener;
+import Lesson29_31.Models.*;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -10,6 +12,7 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 import static org.testng.Assert.assertEquals;
 
+@Listeners(Listener.class)
 public class RestTest {
 
 

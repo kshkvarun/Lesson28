@@ -1,17 +1,19 @@
-package Lesson29.Basket;
+package Lesson29_31.Basket;
+
 
 import Citrus.Pages.CartPage;
 import Citrus.Pages.MainPage;
 import Citrus.Pages.ProductListPage;
 import Citrus.Pages.ProductPage;
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
-
 import com.codeborne.selenide.Configuration;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class AddToBasketFromProductPage {
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.open;
+
+public class AddToBasketUsingSearch {
 
     MainPage mainpage;
     ProductListPage productListPage;
@@ -21,7 +23,6 @@ public class AddToBasketFromProductPage {
     @BeforeClass
     public void openSite(){
         Configuration.baseUrl = "https://www.citrus.ua/";
-        Configuration.startMaximized = true;
         open("");
         mainpage = new MainPage();
         productListPage = new ProductListPage();
@@ -29,13 +30,13 @@ public class AddToBasketFromProductPage {
         productPage = new ProductPage();
     }
 
+
     @Test
-    public void addProductToBasketFromMenu(){
+    public void addProductToBasketUsingSearch(){
         mainpage.waitForCompletePage()
                 .waitForPopUp()
                 .closePopUp()
-                .hoverMenuItem("Смартфоны")
-                .clickOnMenuItemApple("Apple");
+                .searchProduct("Apple iPhone 11 128Gb");
         productListPage.clickProductByName("Apple iPhone 11 128Gb Black");
         String productPrice = productPage.getProductPrice();
         String productName = productPage.getProductName();
@@ -46,5 +47,6 @@ public class AddToBasketFromProductPage {
         basketPage.getBasketProductPrice().get(0).shouldHave(text(productPrice));
         basketPage.getBasketTotal().shouldHave(text(productPrice));
     }
+
 
 }

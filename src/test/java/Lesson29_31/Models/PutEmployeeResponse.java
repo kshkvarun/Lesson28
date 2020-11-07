@@ -1,15 +1,22 @@
-package Lesson30.Models;
+package Lesson29_31.Models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.ArrayList;
 import java.util.Objects;
 
-public class DeleteModel {
+public class PutEmployeeResponse {
 
+
+
+    @JsonProperty("status")
     String status;
-    Integer data;
+    @JsonProperty("data")
+    ArrayList<String> data;
+    @JsonProperty("message")
     String message;
 
-
-    public DeleteModel(String status, Integer data, String message) {
+    public PutEmployeeResponse(String status, ArrayList<String> data, String message) {
         this.status = status;
         this.data = data;
         this.message = message;
@@ -19,7 +26,7 @@ public class DeleteModel {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DeleteModel that = (DeleteModel) o;
+        PutEmployeeResponse that = (PutEmployeeResponse) o;
         return Objects.equals(status, that.status) &&
                 Objects.equals(data, that.data) &&
                 Objects.equals(message, that.message);
